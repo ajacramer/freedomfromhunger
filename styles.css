@@ -312,6 +312,120 @@ Header & navigation
   transform: rotate(-45deg);
 }
 
+/* Partners dropdown in nav */
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.nav-link--has-submenu {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  color: inherit;
+  padding: 0; /* match your anchor nav links */
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none; 
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.nav-caret {
+  font-size: 0.75em;
+  transform: translateY(1px);
+}
+
+/* Submenu base styles (desktop) */
+.nav-submenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.5rem;
+  background-color: var(--color-off-white);
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  padding: 0.75rem 1rem;
+  min-width: 220px;
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 1100;
+}
+
+.nav-sublink {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-darkest-eb);
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.nav-sublink:hover,
+.nav-sublink:focus-visible {
+  color: var(--color-ruby)
+}
+
+/* When the item is open, show submenu */
+.nav-item.open .nav-submenu {
+  display: flex;
+}
+
+/* Mobile behavior for submenu */
+@media (max-width: 890px) {
+  .nav-item {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Center the Partners label + caret like the other links */
+  .nav-link--has-submenu {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .nav-submenu {
+    position: static;
+    transform: none;
+    margin-top: 0.25rem;
+    box-shadow: none;
+    padding: 0.25rem 0;
+    border-radius: 0;
+    min-width: 0;
+    align-items: center;
+  }
+
+  .nav-sublink {
+    width: 100%;
+    padding-block: 0.15rem;
+    text-align: center;
+  }
+}
+
+/* Desktop: open Partners submenu on hover */
+@media (min-width: 891px) {
+  .nav-item--has-submenu:hover .nav-submenu {
+    display: flex;
+  }
+
+  .nav-submenu {
+    margin-top: 0;      /* kill the gap that causes the flicker */
+  }
+}
+
+
 
 /* --------------------
 Responsive nav
@@ -369,6 +483,11 @@ Responsive nav
 
 }
 
+#community-supporters,
+#awareness-ambassadors {
+  scroll-margin-top: 5rem;
+}
+
 
 /* --------------------
 Hero  
@@ -400,7 +519,6 @@ Hero
   margin-bottom: 1rem;
 }
 
-/* row of people icons */
 .hero-icons {
   display: grid;
   grid-template-columns: repeat(10, minmax(0, 1fr));
@@ -409,7 +527,6 @@ Hero
   margin-bottom: 1.75rem;
 }
 
-/* main hero paragraph */
 .hero-lede {
   font-size: 1.05rem;
   font-weight: 600;
@@ -418,7 +535,6 @@ Hero
   margin-bottom: 2rem;
 }
 
-/* hero buttons */
 .hero-cta-row {
   display: flex;
   flex-wrap: wrap;
@@ -441,7 +557,6 @@ Hero
   height: auto;
 }
 
-/* Color controlled via currentColor */
 .hero-icons .icon {
   color: var(--color-darkest-eb);       
   transition: color 0.3s ease;
@@ -457,7 +572,6 @@ Hero
 }
 
 
-/* small-screen tweak: give the icons a bit more room */
 @media (max-width: 890px) {
   .hero-icons {
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -493,7 +607,6 @@ Hero progress tracker
   color: var(--color-lightest-eb)
 }
 
-/* row with bar on the left, goal on the right */
 .hero-progress-row {
   display: flex;
   align-items: stretch;
@@ -746,7 +859,6 @@ Make an Impact / Donate
   white-space: nowrap;
 }
 
-/* Screenreader-only text (for the label) */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -759,7 +871,6 @@ Make an Impact / Donate
   border: 0;
 }
 
-/* Responsive tweaks */
 
 @media (max-width: 890px) {
   .impact-cards {
@@ -799,7 +910,6 @@ Make an Impact / Donate
 Stat banners
 -------------------- */
 
-/* Base stat banner style – used by both 1 and 2 */
 .section-stat {
   background-image:
     linear-gradient(
@@ -815,7 +925,6 @@ Stat banners
   color: var(--color-off-white);
 }
 
-/* If you ever want a different background for #2, you can override here */
 .section-stat--secondary {
   background-image:
     linear-gradient(
@@ -827,7 +936,6 @@ Stat banners
     url("images/giving_food.png");
 }
 
-/* Shared layout for both stats */
 .stat-layout {
   display: flex;
   align-items: center;
@@ -835,12 +943,11 @@ Stat banners
   gap: 1.5rem;
 }
 
-/* For stat #2 only: left cluster vs right text on large screens */
+/* For 2nd stat only: left cluster vs right text on large screens */
 .stat-layout-two {
   justify-content: flex-start;
 }
 
-/* BIG number */
 .stat-number {
   font-family: var(--font-heading);
   font-weight: 800;
@@ -850,7 +957,6 @@ Stat banners
   color: var(--color-light-ruby);
 }
 
-/* Supporting text */
 .stat-text {
   font-family: var(--font-heading);
   font-weight: 600;
@@ -860,7 +966,7 @@ Stat banners
   max-width: 35rem;
 }
 
-/* SECOND stat only: icon + number sit together */
+/* 2nd stat only: icon + number sit together */
 .stat-top {
   display: flex;
   align-items: center;
@@ -872,7 +978,7 @@ Stat banners
   height: auto;
 }
 
-/* Stack nicely on smaller screens (affects both bars) */
+/* Stat Mobile Tweaks */
 @media (max-width: 890px) {
   .stat-layout {
     flex-direction: column;
@@ -890,14 +996,12 @@ Stat banners
     font-size: 1.6rem;
   }
 
-  /* Mobile tweaks for SECOND stat:
-     icon + number on top, text below */
   .stat-layout-two {
     justify-content: center;
   }
 
   .stat-top {
-    justify-content: center; /* icon + number centered together */
+    justify-content: center; 
   }
 
   .stat-icon {
@@ -909,6 +1013,36 @@ Stat banners
   }
 }
 
+/* 3rd Stat Banner - text only */
+.section-hunger-stat {
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+    background-image:
+    linear-gradient(
+      90deg,
+      rgba(28, 82, 120, 0.55),
+      rgba(28, 82, 120, 0.8) 35%,
+      rgba(24, 72, 105, 0.9) 80%
+    ),
+    url("images/giving_food.png");
+  background-position: 0 0, 50%;
+  background-size: auto, cover;
+  padding-block: 2.75rem;
+}
+
+.hunger-stat-text {
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--color-lightest-eb);
+}
+
+.light-ruby-text {
+  color: var(--color-light-ruby)
+}
 
 /* --------------------
 How It Works
@@ -995,7 +1129,7 @@ How It Works
   grid-column: 1 / -1; 
 }
 
-/* Responsive tweak - shrink stars */
+/* shrink stars */
 @media (max-width: 768px) {
   .how-star {
     width: 200px;
@@ -1085,7 +1219,7 @@ MAHN Support Card
 Participating Businesses
 -------------------- */
 .section-partners {
-  background-color: var(--color-off-white);
+  background-color: var(--color-lightest-eb);
   padding: 3.5rem 1rem;
 }
 
@@ -1111,7 +1245,6 @@ Participating Businesses
   opacity: 0.95;
 }
 
-/* Base card: slimmer vertical format */
 .partner-cardT {
   background: var(--color-off-white);
   border-radius: 18px;
@@ -1121,14 +1254,13 @@ Participating Businesses
   flex-direction: column;
   max-width: 300px;   
   max-height: 5000px;
-  margin: 0 auto;  
-  flex: 1 1 280px;
+  margin: 0;  
+  flex: 0 1 280px;
 }
 
-/* More square hero image (was 16/9, now ~1:1.1) */
 .partner-media {
   position: relative;
-  aspect-ratio: 1 / 1.1; /* almost square, slightly taller than wide */
+  aspect-ratio: 1 / 1.1; 
   background: #dfe7ea;
   overflow: hidden;
   min-height: 50%;
@@ -1142,11 +1274,10 @@ Participating Businesses
   object-fit: cover;
 }
 
-/* Partner card bottom content (logo + text) */
 .partner-content {
   position: relative;
   padding: 1.25rem 1.25rem 1rem;
-  padding-top: 2.5rem;             /* extra space for overlap */
+  padding-top: 2.5rem;             
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1155,19 +1286,18 @@ Participating Businesses
   justify-content: flex-start;
 }
 
-/* Logo: overlaps hero image */
 .partner-logoT {
   position: relative;
-  top: -58px;                      /* adjust overlap as needed */
+  top: -58px;                    
   margin-bottom: -58px;
   bottom: 0;
-  z-index: 2;                      /* sits above image */
+  z-index: 2;                  
   background: none;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;                /* ensures clean edges if logo is large */
+  overflow: hidden;          
 }
 
 .partner-logoT img {
@@ -1194,7 +1324,6 @@ Participating Businesses
 
 
 @media (max-width: 768px) {
-  /* Make the businesses section a horizontal carousel */
   .partners-grid--tall {
     flex-wrap: nowrap;               
     overflow-x: auto;                   
@@ -1275,9 +1404,134 @@ Participating Businesses
   }
 }
 
-/* CTA */
 .partners-cta {
   display: flex;
   justify-content: center;
   margin-top: 1.75rem;
 }
+
+
+/* --------------------
+Supporters Section
+-------------------- */
+
+.section-supporters {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+  background: #f4fbfc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.supporter-tier {
+  width: 100%;
+  max-width: 880px;
+  background: var(--color-lightest-eb);
+  border-radius: 32px;
+  padding: clamp(2rem, 4vw, 2.75rem) clamp(1.75rem, 4vw, 3rem);
+  box-shadow: var(--shadow-soft);
+}
+
+.supporter-tier-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.supporter-tier-header h2 {
+  font-size: clamp(1.7rem, 3vw, 2rem);
+  margin-bottom: 0.5rem;
+}
+
+.supporter-tier-header p {
+  max-width: 38rem;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #245c80;
+}
+
+/* Community Supporters */
+.supporter-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.supporter-logo-card {
+  background: rgba(77, 180, 222, 0.18);
+  border-radius: 24px;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 110px;
+  min-width: 160px;
+  text-align: center;
+  flex: 0 1 180px; 
+}
+
+.supporter-logo-placeholder {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-darkest-eb);
+}
+
+.supporter-impact {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  color: #245c80;
+}
+
+.supporter-cta {
+  display: flex;
+  justify-content: center;
+}
+
+/* Awareness Ambassadors – auto-scroll row */
+.ambassador-marquee {
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+}
+
+.ambassador-track {
+  display: flex;
+  gap: 1.25rem;
+  animation: ambassadors-scroll 10s linear infinite;
+}
+
+.ambassador-logo-card {
+  min-width: 180px;
+}
+
+.ambassador-marquee:hover .ambassador-track,
+.ambassador-marquee:focus-within .ambassador-track {
+  animation-play-state: paused;
+}
+
+@keyframes ambassadors-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambassador-track {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .supporter-logo-card {
+    min-width: 150px;
+    padding-inline: 0.75rem;
+  }
+}
+

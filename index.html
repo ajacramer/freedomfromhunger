@@ -27,17 +27,43 @@
         <span class="hamburger"></span>
       </button>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="#how-it-works" class="nav-link">How It Works</a>
-        <a href="#participating-businesses" class="nav-link">Partners</a>
-        <a href="#get-involved" class="nav-link">Get Involved</a>
-        <a href="#contact" class="nav-link">Contact</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#how-it-works" class="nav-link">How It Works</a>
 
-        <!-- Desktop donate button -->
-        <a href="#donate" class="btn btn-primary btn-lg nav-donate-desktop">
-          Donate Now
-        </a>
-      </nav> 
+      <!-- Partners dropdown -->
+      <div class="nav-item nav-item--has-submenu">
+        <button
+          class="nav-link nav-link--has-submenu"
+          type="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Partners
+          <span class="nav-caret" aria-hidden="true">▾</span>
+        </button>
+
+        <div class="nav-submenu" role="menu">
+          <a href="#participating-businesses" class="nav-sublink" role="menuitem">
+            Businesses Giving Back
+          </a>
+          <a href="#community-supporters" class="nav-sublink" role="menuitem">
+            Community Supporters
+          </a>
+          <a href="#awareness-ambassadors" class="nav-sublink" role="menuitem">
+            Awareness Ambassadors
+          </a>
+        </div>
+      </div>
+
+      <a href="#get-involved" class="nav-link">Get Involved</a>
+      <a href="#contact" class="nav-link">Contact</a>
+
+      <!-- Desktop donate button -->
+      <a href="#donate" class="btn btn-primary btn-lg nav-donate-desktop">
+        Donate Now
+      </a>
+    </nav>
+
     </div>
   </header>
 
@@ -229,7 +255,7 @@
     </header>
 
     <div class="how-grid">
-      <!-- Lead item: corporate partners (TOP STAR) -->
+      <!-- Corporate partners -->
       <article class="how-item how-item-lead">
         <div class="how-star">
           <img src="images/corp.svg" alt="Corporate partners" class="how-icon icon-corp">
@@ -239,7 +265,7 @@
         </div>
       </article>
 
-      <!-- Local businesses (BOTTOM LEFT) -->
+      <!-- Local businesses -->
       <article class="how-item">
         <div class="how-star">
           <img src="images/business.svg" alt="Local businesses" class="how-icon icon-biz">
@@ -249,7 +275,7 @@
         </div>
       </article>
 
-      <!-- Community members (BOTTOM RIGHT) -->
+      <!-- Community members -->
       <article class="how-item">
         <div class="how-star">
           <img src="images/community.svg" alt="Community members" class="how-icon icon-community">
@@ -287,6 +313,7 @@
     </div>
   </section>
 
+<!-- Partners-->
 <section class="section-partners" id="participating-businesses">
   <div class="container partners-inner">
     <header class="section-header partners-header">
@@ -447,6 +474,117 @@
     </div>
   </div>
 </section>
+
+<!-- Stat Banner 3 -->
+<section id="hunger-stat" class="section-hunger-stat">
+  <div class="container">
+    <p class="hunger-stat-text">
+      <span class="light-ruby-text">Over half of food pantries</span> in the county 
+      don’t have enough food to serve every guest.
+    </p>
+  </div>
+</section>
+
+<section id="supporters" class="section-supporters">
+
+  <!-- Community Supporters -->
+  <article id="community-supporters" class="supporter-tier">
+    <header class="supporter-tier-header">
+      <h2>Community Supporters</h2>
+      <p>
+        We couldn’t do it without our partners. These businesses and organizations
+        power the Freedom From Hunger campaign through their generosity and
+        commitment to helping our neighbors in need.
+      </p>
+    </header>
+
+    <!-- FLEXBOX row that wraps + centers -->
+    <div class="supporter-logos supporter-logos--community" aria-label="Community Supporter logos">
+      <div class="supporter-logo-card">
+        <span class="supporter-logo-placeholder">Business Logo</span>
+        <p class="supporter-impact">XX lbs of food</p>
+      </div>
+      <div class="supporter-logo-card">
+        <span class="supporter-logo-placeholder">Business Logo</span>
+        <p class="supporter-impact">XX lbs of food</p>
+      </div>
+      <div class="supporter-logo-card">
+        <span class="supporter-logo-placeholder">Business Logo</span>
+        <p class="supporter-impact">XX lbs of food</p>
+      </div>
+      <div class="supporter-logo-card">
+        <span class="supporter-logo-placeholder">Business Logo</span>
+        <p class="supporter-impact">XX lbs of food</p>
+      </div>
+      <div class="supporter-logo-card">
+        <span class="supporter-logo-placeholder">Business Logo</span>
+        <p class="supporter-impact">XX lbs of food</p>
+      </div>
+    </div>
+
+    <div class="supporter-cta">
+      <a href="#form-section" class="btn btn-outline">
+        Become a Community Supporter
+      </a>
+    </div>
+  </article>
+
+
+  <!-- Awareness Ambassadors -->
+  <article id="awareness-ambassadors" class="supporter-tier">
+    <header class="supporter-tier-header">
+      <h2>Awareness Ambassadors</h2>
+      <p>
+        We’re grateful for the ambassadors who lend their voices to the cause.
+        Their passion and outreach help raise awareness, inspire others to give,
+        and remind our community that hunger is a shared challenge we can
+        overcome together.
+      </p>
+    </header>
+
+    <!-- Auto-scrolling single row -->
+    <div class="ambassador-marquee" aria-label="Awareness Ambassador logos">
+      <div class="ambassador-track">
+        <!-- Set 1 -->
+        <div class="supporter-logo-card ambassador-logo-card">
+          <span class="supporter-logo-placeholder">Business Logo</span>
+          <p class="supporter-impact">Business Name</p>
+        </div>
+        <div class="supporter-logo-card ambassador-logo-card">
+          <span class="supporter-logo-placeholder">Business Logo</span>
+          <p class="supporter-impact">Business Name</p>
+        </div>
+        <div class="supporter-logo-card ambassador-logo-card">
+          <span class="supporter-logo-placeholder">Business Logo</span>
+          <p class="supporter-impact">Business Name</p>
+        </div>
+
+        <!-- Duplicate set for seamless looping -->
+        <div class="supporter-logo-card ambassador-logo-card">
+          <span class="supporter-logo-placeholder">Business Logo</span>
+          <p class="supporter-impact">Business Name</p>
+        </div>
+        <div class="supporter-logo-card ambassador-logo-card">
+          <span class="supporter-logo-placeholder">Business Logo</span>
+          <p class="supporter-impact">Business Name</p>
+        </div>
+        <div class="supporter-logo-card ambassador-logo-card">
+          <span class="supporter-logo-placeholder">Business Logo</span>
+          <p class="supporter-impact">Business Name</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="supporter-cta">
+      <a href="#form-section" class="btn btn-outline">
+        Become an Awareness Ambassador
+      </a>
+    </div>
+  </article>
+
+</section>
+
+
 
 
 </main>

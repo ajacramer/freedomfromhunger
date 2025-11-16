@@ -10,6 +10,29 @@ if (navToggle && nav) {
   });
 }
 
+// --- Partners dropdown in nav ---
+const partnersToggle = document.querySelector('.nav-link--has-submenu');
+const partnersItem = document.querySelector('.nav-item--has-submenu');
+
+function isMobileNav() {
+  return window.matchMedia('(max-width: 890px)').matches;
+}
+
+if (partnersToggle && partnersItem) {
+  partnersToggle.addEventListener('click', (event) => {
+    // Only use click-to-open on mobile
+    if (!isMobileNav()) {
+      return;
+    }
+
+    event.preventDefault();
+    const isOpen = partnersItem.classList.toggle('open');
+    partnersToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+}
+
+
+
 // --- Rotating ruby hero icons (random) ---
 const heroIcons = document.querySelectorAll('.hero-icons .icon');
 
