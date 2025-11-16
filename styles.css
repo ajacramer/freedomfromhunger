@@ -38,6 +38,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeSpeed;
+  padding-top: 5rem; /* adjust if the header is taller/shorter */
 }
 
 /* --------------------
@@ -71,6 +72,10 @@ body {
   background-color: var(--color-off-white);
   color: var(--color-darkest-eb);
   font-family: var(--font-body);
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem; 
 }
 
 main {
@@ -203,12 +208,15 @@ Header & navigation
 -------------------- */
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;          
   z-index: 1000;
   background-color: var(--color-off-white);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
+
 
 .site-header .container {
   max-width: 1200px;
@@ -472,7 +480,7 @@ Hero progress tracker
   margin: -4rem auto 2.25rem;
   background-color: var(--color-light-eb);  
   border-radius: 30px;
-  padding: .75rem 3rem 1rem;
+  padding: .75rem 3rem 1.2rem;
   box-shadow: var(--shadow-soft);
   color: var(--color-off-white);
 }
@@ -480,8 +488,9 @@ Hero progress tracker
 .hero-progress-current {
   font-weight: 700;
   font-size: 1.1rem;
-  margin-bottom: 0.2rem;
+  margin-top: 5px;
   text-transform: uppercase;
+  color: var(--color-lightest-eb)
 }
 
 /* row with bar on the left, goal on the right */
@@ -497,11 +506,12 @@ Hero progress tracker
   border-radius: 999px;
   background-color: rgba(244, 251, 252, 0.432);
   overflow: hidden;
+  position: relative;
 }
 
 .progress-fill {
   height: 100%;
-  width: 68%; /* 123k / 180k ≈ 68% */
+  width: 68%;
   background-image: linear-gradient(
     90deg,
     var(--color-darkest-eb),
@@ -509,31 +519,34 @@ Hero progress tracker
   );
   border-radius: inherit;
   padding-bottom: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1rem;
 }
 
 .hero-progress-goal {
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   font-weight: 600;
   text-align: left;
+  margin-bottom: 0.4rem;
 }
 
 .hero-progress-goal .label {
   display: block;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 1rem;
-  text-align: left;
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--color-off-white)
 }
 
-.hero-progress-goal .value {
-  font-size: 1rem;
-}
 
 /* small screens: card a bit squarer, content stacks */
 @media (max-width: 600px) {
   .hero-progress {
     border-radius: 6px;
-    padding: 0.05rem 1.1rem .05rem;
+    padding: 0.5rem 1.1rem 1rem;
   }
 
   .hero-progress-row {
@@ -545,8 +558,8 @@ Hero progress tracker
   .hero-progress-goal {
     display: flex;
     flex-direction: row;
-    justify-content: end;
-    text-align: right;
+    justify-content: center;
+    text-align: center;
     gap: 0.5rem;
     margin-bottom: .5rem;
   }
@@ -1109,6 +1122,7 @@ Participating Businesses
   max-width: 300px;   
   max-height: 5000px;
   margin: 0 auto;  
+  flex: 1 1 280px;
 }
 
 /* More square hero image (was 16/9, now ~1:1.1) */
@@ -1170,56 +1184,100 @@ Participating Businesses
   font-weight: 600;
 }
 
-/* Responsive grid remains the same */
+/* Participating Businesses grid: desktop/tablet layout */
 .partners-grid--tall {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
+  justify-content: center; 
 }
 
-@media (min-width: 960px) {
-  .partners-grid--tall {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
 
 @media (max-width: 768px) {
-  .partner-media {
-    aspect-ratio: 1 / 1; /* pure square on mobile */
+  /* Make the businesses section a horizontal carousel */
+  .partners-grid--tall {
+    flex-wrap: nowrap;               
+    overflow-x: auto;                   
+    scroll-snap-type: x mandatory;      
+    -webkit-overflow-scrolling: touch; 
+    padding-bottom: 0.5rem;
+    justify-content: flex-start;   
+  }
+
+  .partners-grid--tall::-webkit-scrollbar {
+    display: none;
+  }
+
+  .partners-grid--tall {
+    scrollbar-width: none;
   }
 
   .partner-cardT {
-    max-width: 90%;
+    flex: 0 0 82%;
+    max-width: none;
+    scroll-snap-align: start;
+    margin: 0;
   }
 
-  .partner-textT {
-    font-size: 0.9rem;
+  /* Show controls on mobile */
+  .partners-carousel-controls {
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .carousel-arrow {
+    border: none;
+    background: var(--color-light-eb);
+    color: #fff;
+    border-radius: 999px;
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .carousel-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .carousel-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--color-lightest-eb);
+    transition: transform 150ms ease, background-color 150ms ease;
+    border: 1px solid rgba(242, 229, 210, 0.6);
+    outline: none;
+    box-shadow: none;
+  }
+
+  .carousel-dot.is-active {
+    background: var(--color-light-eb);
+    transform: scale(1.3);
+    border: none;
+    outline: none;
+    box-shadow: none;
   }
 }
 
+/* Hide controls on larger screens */
+@media (min-width: 769px) {
+  .partners-carousel-controls {
+    display: none;
+  }
+}
 
 /* CTA */
 .partners-cta {
   display: flex;
   justify-content: center;
   margin-top: 1.75rem;
-}
-
-/* Optional: outline-style button that matches your system */
-.btn.btn-outline {
-  display: inline-block;
-  padding: 0.75rem 1.1rem;
-  border-radius: 12px;
-  border: 2px solid var(--color-teal-eb, #2494a4);
-  color: var(--color-teal-eb, #2494a4);
-  background: #fff;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
-}
-
-.btn.btn-outline:hover {
-  transform: translateY(-1px);
-  background: rgba(36,148,164,0.06);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.10);
 }
