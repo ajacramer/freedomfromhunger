@@ -954,6 +954,7 @@ Make an Impact / Donate
 
   .impact-custom-form {
     width: 100%;
+    flex-direction: column;;
   }
 
   .impact-custom-form .btn {
@@ -963,6 +964,7 @@ Make an Impact / Donate
 
   .impact-custom-input-wrap {
     flex: 1 1 auto;
+    min-width: 40px;
   }
 
   .impact-custom-input {
