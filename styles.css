@@ -179,7 +179,7 @@ Buttons
 .btn-outline {
   background-color: white;
   color: var(--color-darkest-eb);
-  border: 3px solid var(--color-electric-blue);
+  border: 3px solid var(--color-darkest-eb);
 }
 
 .btn-outline:hover {
@@ -2253,9 +2253,10 @@ FAQs & Resources
 }
 
 .faq-answer a {
-  color: var(--color-electric-blue);
+  color: var(--color-darkest-eb);
   font-weight: 600;
-  text-decoration: underline;
+  font-style: italic;
+  text-decoration: none;
   text-decoration-thickness: 1px;
 }
 
