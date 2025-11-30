@@ -177,7 +177,7 @@ Buttons
 }
 
 .btn-outline {
-  background-color: var(--color-off-white);
+  background-color: white;
   color: var(--color-electric-blue);
   border: 3px solid var(--color-electric-blue);
 }
@@ -648,7 +648,7 @@ Hero progress tracker
   font-size: 1.05rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-lightest-eb);
+  color: var(--color-off-white);
 }
 
 /* Meta line under the bar */
@@ -702,7 +702,7 @@ Hero progress tracker
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  color: var(--color-off-white);
+  color: white;
   opacity: 0.9;
   position: relative;
   padding-bottom: 0.25rem;
@@ -737,7 +737,6 @@ Hero progress tracker
   .hero-progress-goal {
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
     text-align: center;
     gap: 0.5rem;
     margin-bottom: .5rem;
@@ -746,6 +745,7 @@ Hero progress tracker
   .hero-progress-goal .label {
     text-align: center;
     font-size: 1.1rem;
+    color: white;
   }
 }
 
