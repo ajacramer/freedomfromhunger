@@ -589,7 +589,7 @@ Hero progress tracker
   background-color: var(--color-lightest-eb);  
   border-radius: 30px;
   padding: .75rem 3rem 1.2rem;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.28);
   color: var(--color-off-white);
   border: 1px solid color-mix(in srgb, var(--color-electric-blue) 20%, transparent);
 }
