@@ -183,7 +183,7 @@ Buttons
 }
 
 .btn-outline:hover {
-  background-color: var(--color-electric-blue);
+  background-color: var(--color-darkest-eb);
   color: var(--color-off-white);
   transform: translateY(-1px);
 }
