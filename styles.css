@@ -731,7 +731,7 @@ Hero progress tracker
   .hero-progress-goal .label {
     text-align: center;
     font-size: 1.1rem;
-    color: white;
+    color: var(--color-darkest-eb);
   }
 }
 
