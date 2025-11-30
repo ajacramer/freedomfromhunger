@@ -2534,4 +2534,18 @@ Social/PR Modal Adjustments
     align-items: center;
     text-align: center;
   }
+
+    .stat-quote {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+
+  .stat-quote-speaker {
+    font-size: 0.75rem;
+  }
+
+  .stat-source {
+    font-size: 0.7rem;
+  }
 }
+
