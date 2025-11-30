@@ -2229,7 +2229,7 @@ FAQs & Resources
 
 @media (max-width: 768px) {
     .faq-badge {
-        width: 90%;
+        width: 75%;
         font-size: 1rem;
     }
 }
