@@ -179,7 +179,7 @@ Buttons
 .btn-outline {
   background-color: white;
   color: var(--color-darkest-eb);
-  border: 3px solid var(--color-darkest-eb);
+  border: 3px solid color-mix(in srgb, var(--color-darkest-eb) 70%, transparent);
 }
 
 .btn-outline:hover {
@@ -2212,13 +2212,19 @@ FAQs & Resources
   left: 50%;
   transform: translateX(-50%);
   background: var(--color-electric-blue);
-  color: #ffffff;
+  color: var(--color-darkest-eb);
   padding: 0.9rem 2.75rem;
   border-radius: 6px;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.1rem;
   text-align: center;
+}
+
+.faq-badge h2 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: white;
 }
 
 @media (max-width: 768px) {
