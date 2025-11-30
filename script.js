@@ -519,3 +519,129 @@ if (ambassadorCta) {
   }
 })();
 
+// --- Progress tracker: compute percent + set bar width ---
+(function () {
+  const progressSection = document.querySelector('.hero-progress');
+  if (!progressSection) return;
+
+  const goalLabel     = progressSection.querySelector('.hero-progress-goal .label');
+  const currentLabel  = progressSection.querySelector('.hero-progress-current');
+  const percentLabel  = progressSection.querySelector('.hero-progress-percent');
+  const fillEl        = progressSection.querySelector('.progress-fill');
+
+  if (!goalLabel || !currentLabel || !percentLabel || !fillEl) return;
+
+  const extractNumber = (text) => {
+    if (!text) return NaN;
+    const numeric = text.replace(/[^\d.]/g, '');
+    return numeric ? Number(numeric) : NaN;
+  };
+
+  const goalLbs    = extractNumber(goalLabel.textContent);
+  const currentLbs = extractNumber(currentLabel.textContent);
+
+  if (!goalLbs || isNaN(goalLbs) || !currentLbs || isNaN(currentLbs)) return;
+
+  let percent = Math.round((currentLbs / goalLbs) * 100);
+  if (percent < 0) percent = 0;
+
+  const barPercent = Math.max(0, Math.min(percent, 100)); // cap bar at 100%
+  fillEl.style.width = `${barPercent}%`;
+
+  percentLabel.textContent = `${percent}% to goal`;
+})();
+
+
+// --- Get Involved form: submit + thank-you modal ---
+(function () {
+  const getInvolvedForm = document.querySelector('.get-involved-form');
+  const thankyouModal = document.getElementById('get-involved-thankyou-modal');
+  if (!getInvolvedForm || !thankyouModal) return;
+
+  const body = document.body;
+  const backButton = document.getElementById('get-involved-back-btn');
+  const closeButtons = thankyouModal.querySelectorAll('.modal-close');
+
+  function openModal() {
+    thankyouModal.classList.add('is-visible');
+    thankyouModal.setAttribute('aria-hidden', 'false');
+    body.classList.add('has-modal-open');
+  }
+
+  function closeModal() {
+    thankyouModal.classList.remove('is-visible');
+    thankyouModal.setAttribute('aria-hidden', 'true');
+    body.classList.remove('has-modal-open');
+  }
+
+  getInvolvedForm.addEventListener('submit', event => {
+    event.preventDefault();
+
+    if (typeof getInvolvedForm.reportValidity === 'function') {
+      if (!getInvolvedForm.reportValidity()) {
+        return;
+      }
+    } else if (!getInvolvedForm.checkValidity || !getInvolvedForm.checkValidity()) {
+      return;
+    }
+
+    getInvolvedForm.reset();
+
+    const activeDetail = document.querySelector('.participation-detail.is-active');
+    if (activeDetail) {
+      activeDetail.classList.remove('is-active');
+    }
+
+    openModal();
+  });
+
+  closeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      closeModal();
+    });
+  });
+
+  thankyouModal.addEventListener('click', event => {
+    if (event.target === thankyouModal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && thankyouModal.classList.contains('is-visible')) {
+      closeModal();
+    }
+  });
+
+  if (backButton) {
+    backButton.addEventListener('click', () => {
+      closeModal();
+      const heroSection = document.getElementById('hero') || document.getElementById('top');
+      if (heroSection && typeof heroSection.scrollIntoView === 'function') {
+        heroSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+})();
+
+// --- Press Release modal trigger ---
+(function () {
+  const pressBtn = document.getElementById('press-release-btn');
+  const pressModal = document.getElementById('press-release-modal');
+  if (!pressBtn || !pressModal) return;
+
+  const body = document.body;
+
+  pressBtn.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    pressModal.classList.add('is-visible');
+    pressModal.setAttribute('aria-hidden', 'false');
+    body.classList.add('has-modal-open');
+
+    const firstFocusable = pressModal.querySelector('a, button, input, select, textarea');
+    if (firstFocusable) {
+      firstFocusable.focus();
+    }
+  });
+})();

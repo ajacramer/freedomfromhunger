@@ -167,7 +167,7 @@
         <div class="progress-bar">
           <div class="progress-fill">
             <span class="hero-progress-current">
-              123,000 lbs raised
+              153,000 lbs raised
             </span>
           </div>
         </div>
@@ -806,9 +806,7 @@
                 >
                   <h3 class="participation-detail-title">Businesses Giving Back</h3>
                   <p class="participation-detail-text">
-                    Placeholder benefits: highlight your featured dish or service, show the
-                    total raised on our campaign page, and be included in select social and email
-                    promotion during Freedom From Hunger.
+                    Businesses Giving Back partners receive a featured listing on the Freedom From Hunger site, including your logo, link, and campaign offer to help raise funds. We’ll spotlight your promotion in select social and email communications to drive visibility and participation. Your business will also be included in press releases throughout the campaign.
                   </p>
                 </div>
 
@@ -818,10 +816,7 @@
                 >
                   <h3 class="participation-detail-title">Community Supporter</h3>
                   <p class="participation-detail-text">
-                    Placeholder benefits: recognition as a Community Supporter on the website,
-                    inclusion in our recap communications, and assets you can share with your
-                    customers and staff.
-                  </p>
+                    Community Supporters have their logo and total pounds raised displayed on the Freedom From Hunger website and featured in our campaign recap communications. You’ll receive a simple toolkit of digital assets to share with customers and staff, along with inclusion in select press releases to highlight your role in helping fight hunger locally.                  </p>
                 </div>
 
                 <div
@@ -830,8 +825,7 @@
                 >
                   <h3 class="participation-detail-title">Awareness Ambassador</h3>
                   <p class="participation-detail-text">
-                    Placeholder benefits: access to campaign graphics, suggested copy for social
-                    and email, and a digital badge you can feature on your website.
+                    Awareness Ambassadors receive access to ready-to-use campaign graphics and suggested copy for social media, email, and newsletters. You’ll also receive a printed table-top poster to display in your business, along with logo recognition on the Freedom From Hunger website and inclusion in select press releases.
                   </p>
                 </div>
               </div>
@@ -847,7 +841,42 @@
           </form>
         </div>
       </div>
+
+          <div class="modal-overlay" id="get-involved-thankyou-modal" aria-hidden="true">
+      <div
+        class="modal-window modal-window--small"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="get-involved-thankyou-title"
+      >
+        <button class="modal-close" type="button" aria-label="Close thank you message">
+          &times;
+        </button>
+
+        <h2 id="get-involved-thankyou-title" class="modal-heading">
+          Thank you for getting involved!
+        </h2>
+
+        <p class="modal-body-text">
+          We’ve received your interest form and the campaign team will follow up with next steps soon.
+          In the meantime, feel free to share Freedom From Hunger with your community.
+        </p>
+
+        <div class="donation-actions">
+          <button
+            type="button"
+            class="btn btn-outline btn-block"
+            id="get-involved-back-btn"
+          >
+            Back to Campaign
+          </button>
+        </div>
+      </div>
+    </div>
+
     </section>
+
+    
 
     <!-- ==================== FAQS & CONTACT SECTION ==================== -->
     <section id="contact" class="section-faqs">
@@ -1001,14 +1030,64 @@
           </div>
 
           <div class="faq-cta-row">
-            <!-- TODO: replace # with real URLs -->
-            <a href="#" class="btn btn-outline">
+            <a href="#" class="btn btn-outline" id="social-kit-btn">
               Social Media Kit
             </a>
-            <a href="#" class="btn btn-outline">
+            <a href="#" class="btn btn-outline" id="press-release-btn">
               2025 Press Release
             </a>
           </div>
+
+          
+          <!-- ==================== PRESS RELEASE MODAL ==================== -->
+          <div class="modal-overlay" id="press-release-modal" aria-hidden="true">
+            <div
+              class="modal-window modal-window--small"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="press-release-modal-title"
+            >
+              <button class="modal-close" type="button" aria-label="Close press release">
+                &times;
+              </button>
+
+              <h2 id="press-release-modal-title" class="modal-heading">
+                2025 Freedom From Hunger Press Release
+              </h2>
+
+              <p class="modal-body-text">
+                The Valley Forge Tourism &amp; Convention Board has launched the 11th annual
+                Freedom From Hunger Food Drive to support the MontCo Anti-Hunger Network (MAHN)
+                and help neighbors experiencing food insecurity across Montgomery County. This year’s
+                goal is to raise $15,000, the equivalent of 180,000 pounds of food.
+              </p>
+
+              <p class="modal-body-text">
+                The campaign kicked off with a kitchen takeover at Emmanuel Lutheran Church in
+                Pottstown, where VFTCB staff and Montgomery County Commissioners helped prepare and
+                serve lunch for local guests. Since 2015, the drive has generated the equivalent of
+                more than 500,000 pounds of food, with demand continuing to rise at pantries county-wide.
+              </p>
+
+              <ul class="modal-list">
+                <li>Goal: $15,000 (180,000 lbs of food)</li>
+                <li>Benefiting more than 70 local pantries and meal providers</li>
+                <li>Supporting over 85,000 residents facing food insecurity each year</li>
+                <li>MAHN has seen a 113% increase in food delivered since 2022</li>
+              </ul>
+
+              <div class="donation-actions">
+                <a
+                  href="/2025 Press Release.docx"
+                  download
+                  class="btn btn-outline btn-block"
+                >
+                  Download Full Press Release
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -1019,7 +1098,7 @@
       
       <div class="footer-brand">
         <img
-          src="images/VFTCB-Logo.jpg"
+          src="images/VFMontco Horiz.png"
           alt="Valley Forge Tourism &amp; Convention Board logo"
           class="footer-logo"
         >

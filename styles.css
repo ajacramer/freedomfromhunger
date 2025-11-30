@@ -701,7 +701,7 @@ Hero progress tracker
   font-size: 1.5rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   color: var(--color-off-white);
   opacity: 0.9;
   position: relative;
@@ -1133,7 +1133,7 @@ How It Works
 -------------------- */
 .section-how {
   background-color: var(--color-lightest-eb);
-  background-image: url("images/how_bg_logo.png");
+  background-image: url("images/how_bg.png");
   background-position: center 300px;
   background-repeat: no-repeat;
   background-size: 75%;
