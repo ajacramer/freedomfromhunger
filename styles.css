@@ -816,13 +816,13 @@ Make an Impact / Donate
   left: 50%;
   width: 6rem;
   transform: translateX(-50%);
-  color: var(--color-off-white);
+  color: white;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.85rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   white-space: nowrap;
@@ -830,7 +830,7 @@ Make an Impact / Donate
 
 .impact-label .star {
   font-size: 1rem;
-  color: var(--color-light-eb);
+  color: white;
 }
 
 .impact-amount {
