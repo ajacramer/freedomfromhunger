@@ -737,14 +737,15 @@ Hero progress tracker
   .hero-progress-goal {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    /* justify-content: center; */
     text-align: center;
     gap: 0.5rem;
     margin-bottom: .5rem;
   }
 
   .hero-progress-goal .label {
-    text-align: right;
+    text-align: center;
+    font-size: 1.1rem;
   }
 }
 
