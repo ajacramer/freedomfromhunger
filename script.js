@@ -487,13 +487,18 @@ if (ambassadorCta) {
     });
   }
 
-  // Share campaign button - scroll to top hero section for now
+  // Share campaign button - open Social Media Kit modal instead
   if (shareCampaignBtn) {
-    shareCampaignBtn.addEventListener('click', () => {
+    shareCampaignBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      // Close the donation thank-you modal
       closeModal(thankyouModal);
-      const heroSection = document.getElementById('hero') || document.getElementById('top');
-      if (heroSection && typeof heroSection.scrollIntoView === 'function') {
-        heroSection.scrollIntoView({ behavior: 'smooth' });
+
+      // Trigger the existing Social Media Kit button to open its modal
+      const socialKitBtn = document.getElementById('social-kit-btn');
+      if (socialKitBtn) {
+        socialKitBtn.click();
       }
     });
   }

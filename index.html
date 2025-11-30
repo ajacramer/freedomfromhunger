@@ -14,6 +14,19 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="Freedom From Hunger" />
   <link rel="manifest" href="/images/site.webmanifest" />
+  <!-- Open Graph / Social Share -->
+  <meta property="og:title" content="Freedom From Hunger – Make an Impact in Montgomery County">
+  <meta property="og:description" content="Join the Freedom From Hunger campaign and help support local food pantries across Montgomery County. Every dollar makes a difference.">
+  <meta property="og:image" content="https://freedomfromhunger.netlify.app/images/FFH_sharecard.jpg">
+  <meta property="og:url" content="https://freedomfromhunger.netlify.app/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Freedom From Hunger – Make an Impact in Montgomery County">
+  <meta name="twitter:description" content="Support local hunger relief. Learn how you can donate or get involved.">
+  <meta name="twitter:image" content="https://freedomfromhunger.netlify.app/images/FFH_sharecard.jpg">
+
 </head>
 
 <body id="top">
@@ -351,7 +364,7 @@
           Every contribution brings us closer to ending hunger in Montgomery County, PA.
         </p>
         <div class="donation-actions">
-          <button type="button" class="btn btn-outline btn-block" id="share-campaign-btn">
+          <button type="button" class="btn btn-outline btn-block" id="share-campaign-btn" data-bs-toggle="modal" data-bs-target="#socialModal">
             Share the Campaign
           </button>
         </div>
