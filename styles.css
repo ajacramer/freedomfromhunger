@@ -2234,6 +2234,13 @@ FAQs & Resources
   text-align: center;
 }
 
+@media (max-width: 768px) {
+    .faq-badge {
+        width: 90%;
+        font-size: 1rem;
+    }
+}
+
 .faq-heading {
   text-align: center;
   margin-bottom: 1.75rem;

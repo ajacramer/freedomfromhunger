@@ -10,6 +10,22 @@ if (navToggle && nav) {
   });
 }
 
+// Close mobile nav when a link is clicked
+if (nav && navToggle) {
+  const navLinks = nav.querySelectorAll('a');
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      // Only auto-close on mobile where the hamburger is used
+      if (window.matchMedia('(max-width: 890px)').matches) {
+        nav.classList.remove('open');
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+}
+
 // --- Partners dropdown in nav (click to open on desktop & mobile, closes on mouseleave/click) ---
 const partnersToggle = document.querySelector('.nav-link--has-submenu');
 const partnersItem   = document.querySelector('.nav-item--has-submenu');
