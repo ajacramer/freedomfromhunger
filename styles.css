@@ -173,12 +173,12 @@ Buttons
 }
 
 .btn-primary:hover {
-  background-color: #c2154b; /* slightly darker ruby */
+  background-color: #c2154b; 
 }
 
 .btn-outline {
   background-color: white;
-  color: var(--color-electric-blue);
+  color: var(--color-darkest-eb);
   border: 3px solid var(--color-electric-blue);
 }
 
@@ -586,11 +586,12 @@ Hero progress tracker
 
 .hero-progress {
   margin: -4rem auto 2.25rem;
-  background-color: var(--color-light-eb);  
+  background-color: var(--color-lightest-eb);  
   border-radius: 30px;
   padding: .75rem 3rem 1.2rem;
   box-shadow: var(--shadow-soft);
   color: var(--color-off-white);
+  border: 1px solid color-mix(in srgb, var(--color-electric-blue) 20%, transparent);
 }
 
 .hero-progress-row {
@@ -610,6 +611,7 @@ Hero progress tracker
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.45),
     inset 0 2px 4px rgba(0, 0, 0, 0.08);
+    border: 1px solid color-mix(in srgb, var(--color-electric-blue) 30%, transparent);
 }
 
 /* Soft highlight across the bar for depth */
@@ -617,11 +619,7 @@ Hero progress tracker
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.5),
-    transparent 55%
-  );
+  background-color: var(--color-off-white);
   pointer-events: none;
 }
 
@@ -648,7 +646,7 @@ Hero progress tracker
   font-size: 1.05rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-off-white);
+  color: white;
 }
 
 /* Meta line under the bar */
@@ -659,7 +657,7 @@ Hero progress tracker
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--color-off-white);
+  color: var(--color-darkest-eb);
   opacity: 0.9;
 }
 
@@ -702,24 +700,12 @@ Hero progress tracker
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  color: white;
+  color: var(--color-darkest-eb);
   opacity: 0.9;
   position: relative;
   padding-bottom: 0.25rem;
 }
 
-/* Subtle underline accent */
-.hero-progress-goal .label::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 1.75rem;
-  height: 2px;
-  background: var(--color-electric-blue);
-  opacity: 0.65;
-  border-radius: 2px;
-}
 
 /* small screens: card a bit squarer, content stacks */
 @media (max-width: 600px) {
