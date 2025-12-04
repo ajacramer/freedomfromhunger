@@ -16,7 +16,6 @@ if (nav && navToggle) {
 
   navLinks.forEach((link) => {
     link.addEventListener('click', () => {
-      // Only auto-close on mobile where the hamburger is used
       if (window.matchMedia('(max-width: 890px)').matches) {
         nav.classList.remove('open');
         navToggle.classList.remove('active');
@@ -26,7 +25,7 @@ if (nav && navToggle) {
   });
 }
 
-// --- Partners dropdown in nav (click to open on desktop & mobile, closes on mouseleave/click) ---
+// --- Partners dropdown in nav  ---
 const partnersToggle = document.querySelector('.nav-link--has-submenu');
 const partnersItem   = document.querySelector('.nav-item--has-submenu');
 
@@ -62,24 +61,20 @@ const heroIcons = document.querySelectorAll('.hero-icons .icon');
 if (heroIcons.length > 0) {
   let currentIndex = 0;
 
-  // Start with a random icon as ruby
   currentIndex = Math.floor(Math.random() * heroIcons.length);
   heroIcons[currentIndex].classList.add('is-ruby');
 
   setInterval(() => {
-    // Remove ruby from current
     heroIcons[currentIndex].classList.remove('is-ruby');
 
-    // Pick a *different* random index
     let nextIndex;
     do {
       nextIndex = Math.floor(Math.random() * heroIcons.length);
     } while (nextIndex === currentIndex);
 
-    // Add ruby to the new one
     heroIcons[nextIndex].classList.add('is-ruby');
     currentIndex = nextIndex;
-  }, 1000); // every 1 second
+  }, 1000); 
 }
 
 // --- "Businesses Giving Back" mobile carousel ---
@@ -97,7 +92,7 @@ if (businessCarousel) {
     let currentBusinessIndex = 0;
     let businessCarouselInterval = null;
     let isProgrammaticScroll = false;
-    let cardOffsets = []; // exact scrollLeft positions for each card
+    let cardOffsets = []; 
 
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
@@ -107,7 +102,6 @@ if (businessCarousel) {
       return window.matchMedia('(max-width: 768px)').matches;
     }
 
-    // Measure actual offsets of each card relative to the scroll container
     function updateCardOffsets() {
       if (!isMobileWidth()) {
         cardOffsets = [];
@@ -158,7 +152,6 @@ if (businessCarousel) {
 
     function goToIndex(index, smooth = true) {
       const total = businessCards.length;
-      // wrap around in both directions
       currentBusinessIndex = ((index % total) + total) % total;
       scrollToBusinessCard(currentBusinessIndex, smooth);
       updateDots();
@@ -176,13 +169,13 @@ if (businessCarousel) {
       if (!isMobileWidth() || prefersReducedMotion) return;
 
       updateCardOffsets();
-      stopBusinessCarousel(); // clear any existing interval
+      stopBusinessCarousel(); 
 
-      // Always start autoplay from the first card
+
       goToIndex(0, false);
 
       businessCarouselInterval = setInterval(() => {
-        nextCard(); // continuous loop: after last, goes back to first
+        nextCard(); 
       }, 4000);
     }
 
@@ -193,17 +186,14 @@ if (businessCarousel) {
       }
     }
 
-    // Initialize dots
     createDots();
 
-    // Ensure we actually start at card #1 on mobile
     window.addEventListener('load', () => {
       if (isMobileWidth()) {
-        // hard-reset scroll position first
         businessCarousel.scrollLeft = 0;
 
         updateCardOffsets();
-        goToIndex(0, false); // explicitly show the first card
+        goToIndex(0, false);
         if (!prefersReducedMotion) {
           startBusinessCarousel();
         }
@@ -211,7 +201,6 @@ if (businessCarousel) {
     });
 
 
-    // Recompute offsets on resize and keep current card centered
     window.addEventListener('resize', () => {
       if (isMobileWidth()) {
         updateCardOffsets();
@@ -220,7 +209,6 @@ if (businessCarousel) {
           startBusinessCarousel();
         }
       } else {
-        // Back to desktop/tablet layout
         stopBusinessCarousel();
         businessCarousel.scrollLeft = 0;
         currentBusinessIndex = 0;
@@ -228,7 +216,6 @@ if (businessCarousel) {
       }
     });
 
-    // Sync dots to manual swiping by finding the closest card offset
     businessCarousel.addEventListener(
       'scroll',
       () => {
@@ -256,7 +243,6 @@ if (businessCarousel) {
       { passive: true }
     );
 
-    // Dot click jumps directly to that card and stops autoplay
     dotsContainer.addEventListener('click', event => {
       const target = event.target;
       if (!(target instanceof HTMLElement)) return;
@@ -268,7 +254,6 @@ if (businessCarousel) {
       }
     });
 
-    // Arrow buttons (wrap around) and stop autoplay when used
     if (prevButton) {
       prevButton.addEventListener('click', () => {
         stopBusinessCarousel();
@@ -283,7 +268,6 @@ if (businessCarousel) {
       });
     }
 
-    // Any manual interaction stops autoplay so it doesn’t fight the user
     ['touchstart', 'mousedown', 'wheel'].forEach(eventName => {
       businessCarousel.addEventListener(
         eventName,
@@ -317,7 +301,7 @@ function showDetailFor(id) {
   if (detail) detail.classList.add('is-active');
 }
 
-// Update details when clicking a radio
+
 function updateParticipationDetails() {
   hideAllDetails();
   const selected = document.querySelector('.participation-input:checked');
@@ -329,20 +313,20 @@ if (participationCards.length > 0) {
   participationCards.forEach(card => {
     const inputId = card.getAttribute('for');
 
-    // Reveal on hover
+
     card.addEventListener('mouseenter', () => {
       hideAllDetails();
       showDetailFor(inputId);
     });
 
-    // Return to selected detail when leaving
+
     card.addEventListener('mouseleave', () => {
       updateParticipationDetails();
     });
   });
 }
 
-// Update details on click
+
 if (participationInputs.length > 0) {
   participationInputs.forEach(input => {
     input.addEventListener('change', updateParticipationDetails);
@@ -356,10 +340,10 @@ function preselectParticipation(levelId) {
   const radio = document.getElementById(levelId);
   if (!radio) return;
 
-  // Check the matching participation radio
+
   radio.checked = true;
 
-  // Trigger the same behavior as if the user clicked it
+
   if (typeof updateParticipationDetails === 'function') {
     updateParticipationDetails();
   } else {
@@ -367,7 +351,6 @@ function preselectParticipation(levelId) {
   }
 }
 
-// Map each CTA to its corresponding participation level
 const givingBackCta = document.querySelector('.partners-cta a[href="#get-involved"]');
 const communityCta  = document.querySelector('#community-supporters .supporter-cta a[href="#get-involved"]');
 const ambassadorCta = document.querySelector('#awareness-ambassadors .supporter-cta a[href="#get-involved"]');
@@ -403,7 +386,7 @@ if (ambassadorCta) {
   const customAmountForm = document.getElementById('custom-amount-form');
   const customAmountInput = document.getElementById('custom-amount');
   const shareCampaignBtn = document.getElementById('share-campaign-btn');
-  const corporateLink = document.getElementById('corporate-sponsorship-link'); // NEW
+  const corporateLink = document.getElementById('corporate-sponsorship-link'); 
 
   const overlays = document.querySelectorAll('.modal-overlay');
   const closeButtons = document.querySelectorAll('.modal-close');
@@ -444,7 +427,6 @@ if (ambassadorCta) {
     openModal(donationModal);
   }
 
-  // Pre-fill and open modal from preset impact cards
   const presetButtons = document.querySelectorAll('.donation-trigger');
   presetButtons.forEach(btn => {
     btn.addEventListener('click', event => {
@@ -454,7 +436,6 @@ if (ambassadorCta) {
     });
   });
 
-  // Handle custom amount CTA
   if (customAmountForm && customAmountInput) {
     customAmountForm.addEventListener('submit', event => {
       event.preventDefault();
@@ -493,7 +474,7 @@ if (ambassadorCta) {
     }
   });
 
-  // Fake "submission" → show thank you message
+  // Fake "submission"
   if (donationForm) {
     donationForm.addEventListener('submit', event => {
       event.preventDefault();
@@ -503,15 +484,13 @@ if (ambassadorCta) {
     });
   }
 
-  // Share campaign button - open Social Media Kit modal instead
+  // Share campaign button 
   if (shareCampaignBtn) {
     shareCampaignBtn.addEventListener('click', (event) => {
       event.preventDefault();
 
-      // Close the donation thank-you modal
       closeModal(thankyouModal);
 
-      // Trigger the existing Social Media Kit button to open its modal
       const socialKitBtn = document.getElementById('social-kit-btn');
       if (socialKitBtn) {
         socialKitBtn.click();
@@ -519,15 +498,14 @@ if (ambassadorCta) {
     });
   }
 
-  // Corporate sponsorship link: close modal, preselect corporate level, and let browser scroll to #get-involved
+  // Corporate sponsorship link
   if (corporateLink) {
     corporateLink.addEventListener('click', () => {
-      // Close the donation modal
+
       closeModal(donationModal);
 
-      // Preselect the "corporate sponsor" participation level
       if (typeof preselectParticipation === 'function') {
-        preselectParticipation('level-community'); // adjust id if needed
+        preselectParticipation('level-community'); 
       } else {
         const radio = document.getElementById('level-community');
         if (radio) {
@@ -535,7 +513,6 @@ if (ambassadorCta) {
           radio.dispatchEvent(new Event('change', { bubbles: true }));
         }
       }
-      // No preventDefault: the anchor will still jump to #get-involved
     });
   }
 })();
@@ -566,7 +543,7 @@ if (ambassadorCta) {
   let percent = Math.round((currentLbs / goalLbs) * 100);
   if (percent < 0) percent = 0;
 
-  const barPercent = Math.max(0, Math.min(percent, 100)); // cap bar at 100%
+  const barPercent = Math.max(0, Math.min(percent, 100)); 
   fillEl.style.width = `${barPercent}%`;
 
   percentLabel.textContent = `${percent}% to goal`;
